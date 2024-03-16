@@ -1,0 +1,39 @@
+#!/usr/bin/bash
+
+TARGET=`pwd`/output
+
+mkdir -p "${TARGET}"
+mkdir -p "${TARGET}/drumkits"
+
+DIR="${TARGET}/drumkits/707"
+mkdir -p "${DIR}"
+pushd "elphnt.io/707"
+for f in *R1.wav; do
+    cp "${f}" "${DIR}"
+done
+popd
+
+DIR="${TARGET}/drumkits/808"
+mkdir -p "${DIR}"
+pushd "technopolis/808"
+for f in `ls */??.WAV`; do
+    cp "${f}" "${DIR}"
+done
+for f in `ls */??00.WAV`; do
+    cp "${f}" "${DIR}"
+done
+for f in `ls */??0050.WAV`; do
+    cp "${f}" "${DIR}"
+done
+cp "BD/BD0025.WAV" "${DIR}"
+rm "${DIR}/SD0050.WAV"
+cp "SD/SD0010.WAV" "${DIR}"
+popd
+
+DIR="${TARGET}/drumkits/909"
+mkdir -p "${DIR}"
+pushd "Rob Roy Recordings/909/"
+for f in BT0A0D3 ST0T0S7 LT0DA MT0DA HT0DA RIM63 HANDCLP2 HHCDA HHODA CSHDA RIDEDA CLOP4 OPCL1; do
+  cp "${f}.WAV" "${DIR}"
+done
+popd
